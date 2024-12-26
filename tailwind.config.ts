@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        black: "#121212",
+        blueGray: {
+          900: "#1E293B",
+          800: "#374151",
+          700: "#4B5563",
+        },
       },
     },
   },
