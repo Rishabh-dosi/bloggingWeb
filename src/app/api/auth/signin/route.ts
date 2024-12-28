@@ -12,7 +12,7 @@ export async function POST(req: Request) {
         }
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (isPasswordValid) {
-            return NextResponse.json({ message: "Success" }, { status: 200 });
+            return NextResponse.json({ user }, { status: 200 });
         }
         return NextResponse.json({ message: "kuch bhi" }, { status: 400 });
     }

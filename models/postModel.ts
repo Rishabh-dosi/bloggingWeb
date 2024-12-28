@@ -14,6 +14,10 @@ const PostSchema = new mongoose.Schema({
         ref: 'User',
         requried: true
     },
+    title: {
+        type: String,
+        required: true
+    }
 },
     { timestamps: true })
 

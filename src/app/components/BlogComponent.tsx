@@ -1,17 +1,26 @@
-interface prompt{
-    title: string,
-    content: string,
-    imageUrl: string
+import Link from "next/link";
+
+interface prompt {
+    post: {
+        _id: string,
+        title: string,
+        content: string,
+        imageUrl: string
+    }
 }
 
 
-export default function BlogCard({ title, content, imageUrl }: prompt) {
+export default function BlogCard(post: prompt) {
+
+    
     return (
-        <div className="bg-blueGray-800 rounded-lg p-4 shadow-md mb-4">
-            <h2 className="text-lg font-bold">{title}</h2>
-            <img src={imageUrl} alt="" />
-            <p className="text-sm text-blueGray-300 mb-2">{content}</p>
-            
-        </div>
+        <Link href={`/post/${post.post._id}`}>
+            <div
+                className="w-full h-[200px] bg-cover bg-center relative transition-transform duration-300 ease-in-out transform hover:scale-110 hover:translate-x-1 hover:translate-y-1"
+                style={{ backgroundImage: `url(${post?.post?.imageUrl})` }}
+            >
+                <div className="text-white p-4 absolute bottom-0 left-0 w-full">{post?.post?.title || "Undefined"}</div>
+            </div>
+        </Link>
     );
 }
