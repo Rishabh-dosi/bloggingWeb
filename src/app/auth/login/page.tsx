@@ -2,11 +2,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-export default async function LoginPage() {
+export default function LoginPage() {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     })
+    const router = useRouter();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -23,8 +24,7 @@ export default async function LoginPage() {
         })
 
         if (data.ok) {
-            const user = await data.json();
-            console.log(user.userName, 44);
+            router.push('/profile')
         }
     }
 

@@ -20,7 +20,7 @@ export default async function Home() {
         <section>
           <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 text-black pt-4 cursor-pointer">
             {posts.data.map((post: any) => (
-              <BlogCard post={post}/>
+              <BlogCard key={post.id} post={post}/>
             )
             
             )

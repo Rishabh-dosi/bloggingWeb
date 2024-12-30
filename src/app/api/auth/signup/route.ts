@@ -3,6 +3,7 @@ import { connectDb } from '../../../../../config/connectDb';
 import User from '../../../../../models/userModel';
 import { NextResponse } from 'next/server';
 import { addImageToSupabase } from '../../createPost/createImageUrl';
+import jwt from 'jsonwebtoken'
 
 export async function POST(req: Request) {
     try {
@@ -26,8 +27,17 @@ export async function POST(req: Request) {
         console.log("here", userName, email, password);
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ email, password: hashedPassword, userName: userName, profileImgUrl });
-        await newUser.save();
-        return NextResponse.json({ message: "User succesfully created" }, { status: 200 });
+        const user = await newUser.save();
+        const userData = {
+            id: user._id,
+            email: email,
+            userName: userName,
+            profileImgUrl:profileImgUrl || null,
+        }
+        const token = await jwt.sign(userData, process.env.JWT_SECRET, { expiresIn: "1h" })
+        return NextResponse.json({ message: "User succesfully created" }, { status: 200 }).cookies.set("token", token, {
+            httpOnly: true,
+        });
     }
     catch (e) {
         console.log(e);
