@@ -6,9 +6,12 @@ import { addImageToSupabase } from "./createImageUrl";
 export async function POST(req: Request) {
     try {
         const { content, imageUrl, userId, file, title } = await req.json()
-        const imgUrl = await addImageToSupabase(file);
+        var imgUrl;
+        if (file) {
+            imgUrl = await addImageToSupabase(file);
+        }
         await connectDb();
-        const post = new Post({ content, imageUrl: imgUrl, userId, title });
+        const post = new Post({ content, imageUrl: imgUrl || imageUrl, userId, title });
         await post.save();
         return NextResponse.json({ message: "Success" }, { status: 200 })
 

@@ -1,7 +1,11 @@
 'use client';
 import { useEffect, useState } from "react";
+import BlogCard from "./BlogComponent";
+interface prompt{
+    userId: string
+}
 
-export default function ProfileTabs({userId}) {
+export default function ProfileTabs({userId}: prompt) {
     const [activeTab, setActiveTab] = useState("myPosts");
     const [myposts, setMyPost] = useState([]);
     useEffect(() => {
@@ -17,11 +21,12 @@ export default function ProfileTabs({userId}) {
 
         fetchData();
     }, [userId])
+    console.log(myposts);   
 
 
     return (
         <div className="w-[80vw] mx-auto mt-6">
-            <div className="bg-white p-4 shadow-md rounded-lg">
+            <div className="bg-white p-4 rounded-lg md:min-h-[300px]">
                 <div className="flex border-b-2">
                     <button
                         onClick={() => setActiveTab("myPosts")}
@@ -41,8 +46,13 @@ export default function ProfileTabs({userId}) {
                 {/* Tab Content */}
                 <div className="mt-4">
                     {activeTab === "myPosts" && (
-                        <div>
-                            <p>Your posts will appear here...</p>
+                        <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 text-black pt-4 cursor-pointer">
+                            {myposts.map((post: any, index:number) => (
+                                <BlogCard key={index} post={post} />
+                            )
+
+                            )
+                            }
                         </div>
                     )}
                     {activeTab === "savedPosts" && (
