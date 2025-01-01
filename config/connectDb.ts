@@ -6,9 +6,9 @@ export const connectDb = async () => {
     }
     try {
         const response = await mongoose.connect(process.env.MONGOURL as string);
-        console.log(response , 445);
+        console.log(response);
     }
     catch (e) {
-        console.log(e , 333);
+        console.log(e);
     }
 };

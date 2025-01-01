@@ -34,7 +34,7 @@ export default function RootLayout({
         <div className="min-h-screen bg-white text-white font-sans">
           {/* <header className="bg-blue-600 py-4 shadow-md">
             <div className="container mx-auto flex justify-between items-center px-4">
-              <h1 className="text-xl font-bold">Tellme</h1>
+              <h1 className="text-xl font-bold">VibeVerse</h1>
               <nav>
                 <Link href="/" className="mr-4 hover:text-blueGray-300">Home</Link>
                 {<Link href="/login" className="mr-4 hover:text-blueGray-300">Login</Link>}
@@ -42,7 +42,7 @@ export default function RootLayout({
               </nav>
             </div>
           </header> */}
-          <Header/>
+          <Header />
           <main className="container mx-auto px-4 py-8">{children}</main>
         </div>
       </body>

@@ -1,18 +1,21 @@
 'use client';
 import { useEffect, useState } from "react";
 import BlogCard from "./BlogComponent";
-interface prompt{
+import { useRouter } from "next/navigation";
+export interface prompt{
     userId: string
 }
 
 export default function ProfileTabs({userId}: prompt) {
     const [activeTab, setActiveTab] = useState("myPosts");
     const [myposts, setMyPost] = useState([]);
+    const router = useRouter()
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(`http://localhost:3000/api/getAllPost/${userId}`);
                 const responseData = await response.json();
+                if(!responseData) router.push('/auth/login')
                 setMyPost(responseData);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -21,7 +24,6 @@ export default function ProfileTabs({userId}: prompt) {
 
         fetchData();
     }, [userId])
-    console.log(myposts);   
 
 
     return (

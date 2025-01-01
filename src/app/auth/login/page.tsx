@@ -16,7 +16,7 @@ export default function LoginPage() {
         }));
 
     };
-    const handleSubmit = async (e: any) =>{
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         const data = await fetch('http://localhost:3000/api/auth/signin', {
             method: 'POST',
@@ -25,6 +25,7 @@ export default function LoginPage() {
 
         if (data.ok) {
             router.push('/profile')
+            localStorage.setItem('status', 'ok');
         }
     }
 
@@ -32,7 +33,7 @@ export default function LoginPage() {
         <div className="flex justify-center">
             <form className="space-y-4 max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg h-[400px] w-[70vw]" onSubmit={handleSubmit}>
                 <div className="text-center text-[rgb(8,12,80)] text-2xl font-bold mb-8">
-                    Login to TellMe
+                    Login to VibeVerse
                 </div>
 
                 <div>
@@ -63,7 +64,7 @@ export default function LoginPage() {
                     />
                 </div>
                 <div className="text-[rgb(8,12,80)] text-center">
-                    <Link href={'/auth/register'}>New to TellMe</Link>
+                    <Link href={'/auth/register'}>New to VibeVerse</Link>
                 </div>
             </form>
         </div>

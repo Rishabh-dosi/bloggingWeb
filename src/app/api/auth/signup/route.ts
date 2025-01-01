@@ -13,18 +13,15 @@ export async function POST(req: Request) {
         const password = formData.get('password') as string;
         const userName = formData.get('userName') as string;
         const profileImg = formData.get('profileImg') as File | null;
-        console.log('here' , email, password, userName, profileImg);
         var profileImgUrl;
         if (profileImg) {
             profileImgUrl = await addImageToSupabase(profileImg, 'profileImg');
-            console.log(profileImgUrl);
         }
         await connectDb();
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return NextResponse.json({ message: "User already exist" }, { status: 400 });
         }
-        console.log("here", userName, email, password);
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ email, password: hashedPassword, userName: userName, profileImgUrl });
         const user = await newUser.save();

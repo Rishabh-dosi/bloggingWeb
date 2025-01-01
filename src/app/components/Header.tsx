@@ -7,6 +7,7 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+    const isLogin = localStorage.getItem('status');
 
 
     // Function to toggle the navbar on mobile
@@ -14,7 +15,7 @@ export default function Header() {
     return (
         <header className="bg-white py-4 shadow-md">
             <div className="container mx-auto flex justify-between items-center px-4">
-                <h1 className="text-2xl font-bold text-[rgb(8,12,80)]">Tellme</h1>
+                <h1 className="text-3xl font-bold text-[rgb(8,12,80)]">𝓥𝓲𝓫𝓮𝓥𝓮𝓻𝓼𝓮</h1>
 
                 {/* Hamburger Button - Visible only on mobile */}
                 <button
@@ -43,8 +44,8 @@ export default function Header() {
                     <div className="md:flex items-center space-x-4 hidden sm:block w-100 bg-[rgb(8,12,80)] w-[30vw] justify-between p-4 relative">
                         <div className="absolute left-[-30px] top-[-23px] w-0 h-0 border-t-[55px] border-b-[50px] border-l-[55px] border-t-transparent border-b-transparent border-l-[rgb(8,12,80)] rotate-[270deg] z-0"></div>
                         <Link href="/" className="mr-4 hover:text-blueGray-300 z-10">Home</Link>
-                        <Link href="/auth/login" className="mr-4 hover:text-blueGray-300">Login</Link>
-                        <Link href="/auth/register" className="hover:text-blueGray-300">Register</Link>
+                        <Link href={isLogin ? '/profile' : "/auth/login"} className="mr-4 hover:text-blueGray-300">{isLogin ? 'Profile' : 'Login'}</Link>
+                        {!isLogin && <Link href="/auth/register" className="hover:text-blueGray-300">Register</Link>}
                     </div>
 
                     {/* Dropdown for mobile */}
@@ -56,9 +57,9 @@ export default function Header() {
                             More
                         </button>
                         {isDropdownOpen && (
-                            <div className="absolute bg-white text-[rgb(8,12,80)] mt-2 rounded-lg shadow-md left-[-20px]">
+                            <div className="absolute bg-white text-[rgb(8,12,80)] mt-2 rounded-lg shadow-md left-[-20px] z-10">
                                 <Link href="/" className="block px-4 py-2 hover:bg-blue-700">Home</Link>
-                                <Link href="/login" className="block px-4 py-2 hover:bg-blue-700">Login</Link>
+                                <Link href={isLogin ? '/profile' : "/auth/login"} className="block px-4 py-2 hover:bg-blue-700">{isLogin ? 'Profile' : 'Login'}</Link>
                                 <Link href="/register" className="block px-4 py-2 hover:bg-blue-700">Register</Link>
                             </div>
                         )}

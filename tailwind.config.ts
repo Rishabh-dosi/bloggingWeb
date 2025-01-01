@@ -18,6 +18,9 @@ export default {
           700: "#4B5563",
         },
       },
+      backgroundImage: {
+        'parallax':'url("/background-img.png")'
+      }
     },
   },
   plugins: [],
