@@ -22,7 +22,7 @@ export default async function Home() {
 
           {/* Image Section */}
           <div className="hidden md:block w-[40%] mr-5">
-            <img src="/main-poster-img.png" alt="Main Poster" className="object-contain h-full" />
+            <img src="/main-poster-img.png" alt="Main Poster" className="object-contain h-full skew-y-3 animate-rotate-3d" />
           </div>
         </div>
 
@@ -34,6 +34,7 @@ export default async function Home() {
 
         {/* -----------------------------------Show Blogs---------------------------------------- */}
         <section>
+          <div className="text-center text-[rgb(8,12,80)] mx-auto my-3 text-3xl"> 𝓗𝓮𝓻𝓮 𝓐𝓻𝓮 𝓼𝓸𝓶𝓮 𝓣𝓻𝓮𝓷𝓭𝓲𝓷𝓰 𝓟𝓸𝓼𝓽 </div>
           <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 text-black pt-4 cursor-pointer">
             {posts.data.map((post: any) => (
 
