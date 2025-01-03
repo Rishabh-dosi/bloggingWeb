@@ -7,7 +7,7 @@ export default function ProfileButtons({userId}:prompt) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-    const handleLogout = async (e) => {
+    const handleLogout = async () => {
         const resp = await fetch('http://localhost:3000/api/auth/logout', {
             method: "POST"
         })
