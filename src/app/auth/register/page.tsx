@@ -63,7 +63,7 @@ export default function RegisterPage() {
                 profileImg: null,
             });
 
-            router.push('/');
+            router.push('/profile');
         } else {
             console.error('Failed to register');
         }

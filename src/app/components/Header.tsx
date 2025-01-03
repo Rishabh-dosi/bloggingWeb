@@ -7,7 +7,8 @@ export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-    const isLogin = localStorage.getItem('status');
+    // const isLogin = localStorage.getItem('status');
+    const isLogin = false;
 
 
     // Function to toggle the navbar on mobile
