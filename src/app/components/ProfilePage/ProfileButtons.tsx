@@ -41,7 +41,7 @@ export default function ProfileButtons({userId}:prompt) {
                 </button>
                 {isDropdownOpen && (
                     <div className="mt-2 bg-white shadow-lg rounded-lg p-2 w-32 absolute right-0">
-                        <button className="block w-full text-left p-2 text-yellow-500 hover:bg-yellow-100 rounded">
+                        <button className="block w-full text-left p-2 text-yellow-500 hover:bg-yellow-100 rounded" onClick={handleLogout}>
                             Logout
                         </button>
                         <Link href={`/addpost/${userId}`} className="block w-full text-left p-2 text-yellow-500 hover:bg-yellow-100 rounded">
