@@ -8,7 +8,9 @@ export default async function Home() {
   if (!response.ok) {
     const errorText = await response.text(); // Get the raw response text for debugging
     console.error("Error fetching data:", errorText);
-    throw new Error("Failed to fetch posts");
+    return <div className="text-2xl mt-5 text-red-600">websit under maintainence</div>
+      
+    
   }
 
   let posts = await response.json();
