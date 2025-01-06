@@ -46,7 +46,7 @@ export default function RegisterPage() {
         if (formData.profileImg) {
             form.append("profileImg", formData.profileImg);
         }
-        const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+        const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
         const data = await fetch(`${base_url}/api/auth/signup`, {
             method: 'POST',
             body: form,

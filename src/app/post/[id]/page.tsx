@@ -6,8 +6,9 @@ export default async function PostPage({
     params: Promise<{ id: string }>
 }) {
     const id = (await params).id;
+    const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
 
-    const postData = await fetch(`http://localhost:3000/api/getPostById/${id}`);
+    const postData = await fetch(`${base_url}/api/getPostById/${id}`);
     const postResponse = await postData.json();
     return (
 

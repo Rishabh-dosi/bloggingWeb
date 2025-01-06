@@ -13,7 +13,7 @@ export default function AddBlogPostForm({
         image: null
     });
     const [userId, setUserId] = useState<string>("");
-    const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+    const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
 
 
     useEffect(() => {
