@@ -75,7 +75,7 @@ export default function AddBlogPostForm({
                         name="content"
                         onChange={handleChange}
                         className="w-full px-4 py-2 border border-gray-300 rounded-md text-[rgb(8,12,80)] focus:outline-none focus:ring-2 focus:ring-[rgb(8,12,80)]"
-                        rows="6"
+                        rows={6}
                     />
                 </div>
 
