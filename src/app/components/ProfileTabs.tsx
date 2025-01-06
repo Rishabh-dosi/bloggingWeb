@@ -10,10 +10,11 @@ export default function ProfileTabs({userId}: prompt) {
     const [activeTab, setActiveTab] = useState("myPosts");
     const [myposts, setMyPost] = useState([]);
     const router = useRouter()
+    const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/api/getAllPost/${userId}`);
+                const response = await fetch(`${base_url}/api/getAllPost/${userId}`);
                 const responseData = await response.json();
                 if(!responseData) router.push('/auth/login')
                 setMyPost(responseData);

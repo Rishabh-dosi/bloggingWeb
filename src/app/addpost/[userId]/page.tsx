@@ -13,6 +13,8 @@ export default function AddBlogPostForm({
         image: null
     });
     const [userId, setUserId] = useState<string>("");
+    const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+
 
     useEffect(() => {
         const fetchUserId = async () => {
@@ -40,7 +42,7 @@ export default function AddBlogPostForm({
         }
         apiData.append('userId', userId);
 
-        const response = await fetch('http://localhost:3000/api/createPost', {
+        const response = await fetch(`${base_url}/api/createPost`, {
             method: "POST",
             body: apiData
         })

@@ -1,13 +1,8 @@
-// const fetchBlogsData = async () =>{
-//   const response = await fetch('https://localhost:3000/api/getAllPost')
-//   const responseData = await response.json();
-//   return responseData;
-// }
-
 import BlogCard from "./components/BlogComponent";
 
 export default async function Home() {
-  let data = await fetch('http://localhost:3000/api/getAllPost')
+  const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+  let data = await fetch(`${base_url}/api/getAllPost`)
   let posts = await data.json()
   return (
     <>
@@ -38,7 +33,7 @@ export default async function Home() {
           <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 text-black pt-4 cursor-pointer">
             {posts.data.map((post: any) => (
 
-              <BlogCard key={post.id} post={post} />
+              <BlogCard key={post?.id} post={post} />
             )
 
             )

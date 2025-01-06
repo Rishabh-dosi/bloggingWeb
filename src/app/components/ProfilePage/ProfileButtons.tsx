@@ -8,7 +8,8 @@ export default function ProfileButtons({userId}:prompt) {
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const handleLogout = async () => {
-        const resp = await fetch('http://localhost:3000/api/auth/logout', {
+        const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+        const resp = await fetch(`${base_url}/api/auth/logout`, {
             method: "POST"
         })
         localStorage.clear();

@@ -46,8 +46,8 @@ export default function RegisterPage() {
         if (formData.profileImg) {
             form.append("profileImg", formData.profileImg);
         }
-
-        const data = await fetch('http://localhost:3000/api/auth/signup', {
+        const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+        const data = await fetch(`${base_url}/api/auth/signup`, {
             method: 'POST',
             body: form,
         });

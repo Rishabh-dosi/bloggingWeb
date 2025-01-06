@@ -18,7 +18,8 @@ export default function LoginPage() {
     };
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const data = await fetch('http://localhost:3000/api/auth/signin', {
+        const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+        const data = await fetch(`${base_url}/api/auth/signin`, {
             method: 'POST',
             body: JSON.stringify(formData)
         })
