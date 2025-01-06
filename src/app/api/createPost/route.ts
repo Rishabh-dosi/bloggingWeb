@@ -9,7 +9,7 @@ export async function POST(req: Request) {
         const content = formData.get('content');
         const userId = formData.get('userId');
         const title = formData.get('title');
-        const file = formData.get('file')
+        const file = formData.get('file') as File;
         // const { content, imageUrl, userId, file, title } = await req.json()
         var imgUrl;
         if (file) {
