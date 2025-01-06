@@ -21,7 +21,7 @@ export default function AddBlogPostForm({
         };
         fetchUserId();
     }, [params]);
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
         const { name, value, type, files } = e.target;
         if (type === "file") {
             setFormData({ ...formData, image: files[0] });
@@ -30,7 +30,7 @@ export default function AddBlogPostForm({
         }
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
         const apiData = new FormData();
         apiData.append('title', formData.title);
