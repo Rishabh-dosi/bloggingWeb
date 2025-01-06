@@ -2,21 +2,21 @@
 import { useEffect, useState } from "react";
 import BlogCard from "./BlogComponent";
 import { useRouter } from "next/navigation";
-export interface prompt{
+export interface prompt {
     userId: string
 }
 
-export default function ProfileTabs({userId}: prompt) {
+export default function ProfileTabs({ userId }: prompt) {
     const [activeTab, setActiveTab] = useState("myPosts");
     const [myposts, setMyPost] = useState([]);
     const router = useRouter()
-    const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
+    const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app/' : 'http://localhost:3000'
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(`${base_url}/api/getAllPost/${userId}`);
                 const responseData = await response.json();
-                if(!responseData) router.push('/auth/login')
+                if (!responseData) router.push('/auth/login')
                 setMyPost(responseData);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -50,7 +50,7 @@ export default function ProfileTabs({userId}: prompt) {
                 <div className="mt-4">
                     {activeTab === "myPosts" && (
                         <div className="max-w-screen-lg mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 text-black pt-4 cursor-pointer">
-                            {myposts.map((post: any, index:number) => (
+                            {myposts.map((post: any, index: number) => (
                                 <BlogCard key={index} post={post} />
                             )
 

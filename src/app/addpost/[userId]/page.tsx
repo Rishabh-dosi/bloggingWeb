@@ -13,7 +13,7 @@ export default function AddBlogPostForm({
         image: null
     });
     const [userId, setUserId] = useState<string>("");
-    const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
+    const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app/' : 'http://localhost:3000'
 
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function AddBlogPostForm({
         }
     };
 
-    const handleSubmit = async (e:any) => {
+    const handleSubmit = async (e: any) => {
         e.preventDefault();
         const apiData = new FormData();
         apiData.append('title', formData.title);
@@ -46,7 +46,7 @@ export default function AddBlogPostForm({
             method: "POST",
             body: apiData
         })
-        
+
     };
 
     return (

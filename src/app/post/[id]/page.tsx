@@ -6,7 +6,7 @@ export default async function PostPage({
     params: Promise<{ id: string }>
 }) {
     const id = (await params).id;
-    const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
+    const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app/' : 'http://localhost:3000'
 
     const postData = await fetch(`${base_url}/api/getPostById/${id}`);
     const postResponse = await postData.json();
@@ -14,8 +14,8 @@ export default async function PostPage({
 
         <div className="flex-col gap-4 justify-center relative">
             <div className="absolute left-0 top-0 text-black rounded-sm w-fit p-2 md:block hidden">
-                <BackButton/>
-            
+                <BackButton />
+
             </div>
 
             <div className="text-white font-bold text-2xl bg-[rgb(177,222,53)] p-4 relative md:w-[640px] pr-10 mx-auto">
@@ -29,7 +29,7 @@ export default async function PostPage({
             <div className="mx-auto md:w-[640px] text-black pt-2">
                 {postResponse.content}
             </div>
-            
+
         </div>
     )
 

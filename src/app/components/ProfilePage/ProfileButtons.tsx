@@ -3,17 +3,17 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { prompt } from '../ProfileTabs';
 
-export default function ProfileButtons({userId}:prompt) {
+export default function ProfileButtons({ userId }: prompt) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const handleLogout = async () => {
-        const base_url = process.env.NODE_ENV == 'production' ? 'vibeverse-pguv8wbzj-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
+        const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app/' : 'http://localhost:3000'
         const resp = await fetch(`${base_url}/api/auth/logout`, {
             method: "POST"
         })
         localStorage.clear();
-        
+
     }
 
 
