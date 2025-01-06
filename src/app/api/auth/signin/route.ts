@@ -19,7 +19,11 @@ export async function POST(req: Request) {
                 profileImgUrl: user?.profileImgUrl,
                 email: user.email
             }
-            const token = await jwt.sign(userData, process.env.JWT_SECRET, { expiresIn: "1h" });
+            const jwtSecret = process.env.JWT_SECRET;
+            if (!jwtSecret) {
+                return NextResponse.json({ message: "JWT secret is not defined" }, { status: 500 });
+            }
+            const token = await jwt.sign(userData, jwtSecret, { expiresIn: "1h" });
            console.log(token, 887);
             
             // return NextResponse.json({ user }, { status: 200 }).cookies.set("token", token, {

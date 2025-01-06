@@ -46,8 +46,12 @@ export async function POST(req: Request) {
             userName: user.userName,
             profileImgUrl: profileImgUrl || null,
         };
+        const jwtSecret = process.env.JWT_SECRET;
+        if (!jwtSecret) {
+            return NextResponse.json({ message: "JWT secret is not defined" }, { status: 500 });
+        }
 
-        const token = jwt.sign(userData, process.env.JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign(userData, jwtSecret, { expiresIn: "1h" });
 
         // Set the token in cookies and return the success response
         const response = NextResponse.json({ message: "User successfully created" }, { status: 200 });
