@@ -10,7 +10,7 @@ export default function ProfileTabs({ userId }: prompt) {
     const [activeTab, setActiveTab] = useState("myPosts");
     const [myposts, setMyPost] = useState([]);
     const router = useRouter()
-    const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
+    const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-rouge.vercel.app' : 'http://localhost:3000'
     useEffect(() => {
         const fetchData = async () => {
             try {

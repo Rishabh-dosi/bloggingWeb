@@ -8,7 +8,7 @@ export default function ProfileButtons({ userId }: prompt) {
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const handleLogout = async () => {
-        const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
+        const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-rouge.vercel.app' : 'http://localhost:3000'
         const resp = await fetch(`${base_url}/api/auth/logout`, {
             method: "POST"
         })
