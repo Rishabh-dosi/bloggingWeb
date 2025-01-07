@@ -9,7 +9,11 @@ export default async function Page() {
     const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-rouge.vercel.app' : 'http://localhost:3000'
     const userData = await fetch(`${base_url}/api/auth/verifyToken`, { 
         method: "POST",
-        body: JSON.stringify({token}),
+        body: JSON.stringify({ token }),
+        next: {
+            revalidate: 5000,
+        },
+        cache: 'no-store'
     })
     
     const userInfo = await userData.json();
