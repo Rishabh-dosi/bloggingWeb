@@ -10,6 +10,19 @@ export default async function PostPage({
 
     const postData = await fetch(`${base_url}/api/getPostById/${id}`);
     const postResponse = await postData.json();
+    const dateString = postResponse?.createdAt;
+
+    // Create a Date object from the string
+    const date = new Date(dateString);
+
+    // Extract the date portion (YYYY-MM-DD)
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');  // Months are 0-based, so add 1
+    const day = String(date.getDate()).padStart(2, '0');
+
+    // Combine the extracted parts into a date string
+    const formattedDate = `${day}-${month}-${year}`;
+
     return (
 
         <div className="flex-col gap-4 justify-center relative">
@@ -27,6 +40,10 @@ export default async function PostPage({
                 </div>
             </div>
             <div className="mx-auto md:w-[640px] text-black pt-2">
+                <div className=" text-slate-700 text-lg italic">{formattedDate}</div>
+                <br />
+
+                <br />
                 {postResponse.content}
             </div>
 

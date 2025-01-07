@@ -2,7 +2,12 @@ import BlogCard from "./components/BlogComponent";
 
 export default async function Home() {
   const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-rouge.vercel.app' : 'http://localhost:3000'
-  let response = await fetch(`${base_url}/api/getAllPost`)
+  let response = await fetch(`${base_url}/api/getAllPost`, {
+    next: {
+      revalidate: 5000,
+    },
+    cache: 'no-store'
+  })
   console.log("API Response Status:", response.status);
 
   if (!response.ok) {
