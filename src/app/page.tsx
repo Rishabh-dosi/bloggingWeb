@@ -1,7 +1,7 @@
 import BlogCard from "./components/BlogComponent";
 
 export default async function Home() {
-  const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app/' : 'http://localhost:3000'
+  const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
   let response = await fetch(`${base_url}/api/getAllPost`)
   console.log("API Response Status:", response.status);
 

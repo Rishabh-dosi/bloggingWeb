@@ -18,7 +18,7 @@ export default function LoginPage() {
     };
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app/' : 'http://localhost:3000'
+        const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-git-main-rishabh-dosis-projects.vercel.app' : 'http://localhost:3000'
         const data = await fetch(`${base_url}/api/auth/signin`, {
             method: 'POST',
             body: JSON.stringify(formData)
