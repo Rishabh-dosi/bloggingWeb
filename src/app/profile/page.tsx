@@ -6,7 +6,7 @@ import Link from "next/link";
 export default async function Page() {
     const cookieStore = await cookies(); 
     const token = cookieStore.get("token")?.value;
-    const base_url = process.env.NODE_ENV == 'production' ? '' : 'http://localhost:3000'
+    const base_url = process.env.NODE_ENV == 'production' ? 'https://vibeverse-rouge.vercel.app' : 'http://localhost:3000'
     const userData = await fetch(`${base_url}/api/auth/verifyToken`, { 
         method: "POST",
         body: JSON.stringify({token}),
