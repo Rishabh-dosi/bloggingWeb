@@ -70,7 +70,7 @@ export default function RegisterPage() {
     };
 
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center" style={{ backgroundImage: "url('/banner-img.png')" }}>
             <form
                 className="space-y-4 max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg h-[400px] w-[70vw]"
                 onSubmit={handleSubmit}
