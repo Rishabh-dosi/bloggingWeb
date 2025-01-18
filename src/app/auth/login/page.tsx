@@ -31,7 +31,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="flex justify-center" style={{ backgroundImage: "url('/banner-img.png')" }}>
+        <div className="flex justify-center">
             <form className="space-y-4 max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg h-[400px] w-[70vw]" onSubmit={handleSubmit}>
                 <div className="text-center text-[rgb(8,12,80)] text-2xl font-bold mb-8">
                     Login to VibeVerse

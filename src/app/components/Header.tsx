@@ -61,7 +61,7 @@ export default function Header() {
                             <div className="absolute bg-white text-[rgb(8,12,80)] mt-2 rounded-lg shadow-md left-[-20px] z-10">
                                 <Link href="/" className="block px-4 py-2 hover:bg-blue-700">Home</Link>
                                 <Link href={isLogin ? '/profile' : "/auth/login"} className="block px-4 py-2 hover:bg-blue-700">{isLogin ? 'Profile' : 'Login'}</Link>
-                                <Link href="/register" className="block px-4 py-2 hover:bg-blue-700">Register</Link>
+                                <Link href="/auth/register" className="block px-4 py-2 hover:bg-blue-700">Register</Link>
                             </div>
                         )}
                     </div>
